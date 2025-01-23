@@ -85,7 +85,7 @@ client.on('ready', () => {
 
 client.on("messageCreate", async function (message) { // Listen for the "messageCreate" event
   // Check if message is from the bot itself to avoid infinite loops
-  if (message.author.bot) return;
+  if (message.author.bot || message.channelId != 1331901049942048819) return;
 
   console.log(`got a message!: ${message.content} `);
 
