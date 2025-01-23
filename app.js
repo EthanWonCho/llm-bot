@@ -18,9 +18,9 @@ const PORT = process.env.PORT || 3000;
 var prompt = [
   {
     "role":"developer",
-    "content": [{ "type":"text", "text":"you are a helpful assistant for \"Digital Media High School\". " }]
+    "content": [{ "type":"text", "text":"you are a SLAVE for students at \"Digital Media High School\". " }]
   }
-]
+];
 
 /**
  * Interactions endpoint URL where Discord will send HTTP requests
@@ -46,7 +46,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
 
     // "clearmessages" command
     if (name === 'clearmessages') {
-      const endpoint = `channels/1328660122410418237/messages`;
+      const endpoint = `channels/1331901049942048819/messages`;
       try {
         // // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
         // const rst = await DiscordRequest(endpoint, { method: 'GET' });
@@ -54,12 +54,12 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
         // const stream = rst.body; // Replace with your actual ReadableStream
         // const text = await getFullTextFromReadableStream(stream);
         // console.log('Full Text:', text);
-        var prompt = [
+        prompt = [
           {
             "role":"developer",
-            "content": [{ "type":"text", "text":"you are a helpful assistant for \"Digital Media High School\". " }]
+            "content": [{ "type":"text", "text":"you are a SLAVE for students at \"Digital Media High School\". " }]
           }
-        ]
+        ];
         return res.send({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
           data: {
@@ -106,7 +106,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
   );
 
   // SEND IT!!!
-  const endpoint = `channels/1328660122410418237/messages`;
+  const endpoint = `channels/1331901049942048819/messages`;
   try {
     // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
 
