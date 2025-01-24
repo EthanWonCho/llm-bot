@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 3000;
 var prompt = [
   {
     "role":"developer",
-    "content": [{ "type":"text", "text":"you are a SLAVE for students at \"Digital Media High School\". " }]
+    "content": [{ "type":"text", "text":"너는 \"Digital Media High School\"에 다니는 학생들을 위한 어시스턴트이다. " }]
   }
 ];
 
@@ -57,7 +57,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.PUBLIC_KEY), async fun
         prompt = [
           {
             "role":"developer",
-            "content": [{ "type":"text", "text":"you are a SLAVE for students at \"Digital Media High School\". " }]
+            "content": [{ "type":"text", "text":"너는 \"Digital Media High School\"에 다니는 학생들을 위한 어시스턴트이다. " }]
           }
         ];
         return res.send({
