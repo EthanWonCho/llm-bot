@@ -46,7 +46,6 @@ app.post('/interactions', verifyKeyMiddleware(process.env.DISCORD_PUBLIC_KEY), a
 
     // "clearmessages" command
     if (name === 'clearmessages') {
-      const endpoint = `channels/1331901049942048819/messages`;
       try {
         // // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
         // const rst = await DiscordRequest(endpoint, { method: 'GET' });
@@ -85,7 +84,7 @@ client.on('ready', () => {
 
 client.on("messageCreate", async function (message) { // Listen for the "messageCreate" event
   // Check if message is from the bot itself to avoid infinite loops
-  if (message.author.bot || message.channelId != 1331901049942048819) return;
+  if (message.author.bot || message.channelId != 1350037143812182077) return;
 
   console.log(`got a message!: ${message.content} `);
 
