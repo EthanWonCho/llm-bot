@@ -10,4 +10,4 @@ const CLEARMESSAGES_COMMAND = {
 
 const ALL_COMMANDS = [CLEARMESSAGES_COMMAND];
 
-InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
+InstallGlobalCommands(process.env.DISCORD_APP_ID, ALL_COMMANDS);
