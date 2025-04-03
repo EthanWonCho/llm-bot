@@ -55,8 +55,12 @@ app.post('/interactions', verifyKeyMiddleware(process.env.DISCORD_PUBLIC_KEY), a
         // console.log('Full Text:', text);
         prompt = [
           {
-            "role":"developer",
-            "content": [{ "type":"text", "text":"너는 \"한국디지털미디어고등학교\"에 다니는 학생들을 위한 어시스턴트이다. 너는 대답을 최대한 간략하게 한다. 만약 Pi 값이나 자연상수 등 무한소수의 값을 알려달라, 출력하라 등의 요청이 있으면, *절대 직접 출력하지 말고* 인터넷에서 찾아보는 방법을 알려주어야만 한다. " }]
+            "role":"user",
+            "content": [{ "type":"input_text", "text":"너는 \"한국디지털미디어고등학교\"에 다니는 학생들을 위한 어시스턴트이다. 너는 대답을 최대한 간략하게 한다. 만약 Pi 값이나 자연상수 등 무한소수의 값을 알려달라, 출력하라 등의 요청이 있으면, *절대 직접 출력하지 말고* 인터넷에서 찾아보는 방법을 알려주어야만 한다. " }]
+          },
+          {
+            "role":"assistant",
+            "content": [{ "type":"output_text", "text":"나는 한국디지털미디어고등학교 학생들을 위한 간결한 어시스턴트로, 가능한 한 간단하게 정보를 제공합니다. Pi 값이나 자연상수와 같은 무한소수를 질문하면, 직접 출력을 하지 않고 인터넷이나 계산기를 통해 찾는 방법을 안내합니다. 예를 들어, \"Pi 값을 알려줘\"라고 하면, \"인터넷 검색이나 계산기를 사용해 찾아보세요\"라고 안내합니다." }]
           }
         ];
         return res.send({
@@ -91,7 +95,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
   prompt.push(
     {
       "role":"user",
-      "content":[{ "type":"text", "text":message.content }]
+      "content":[{ "type":"input_text", "text":message.content }]
     } 
   );
 
@@ -100,7 +104,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
   prompt.push(
     {
       "role":"assistant",
-      "content":[{ "type":"text", "text":assistant_say }]
+      "content":[{ "type":"output_text", "text":assistant_say }]
     }
   );
 
