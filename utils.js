@@ -11,7 +11,7 @@ export async function callChatGPT(message_contents) {
   };
 
   const data = {
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     messages: message_contents
   };
 
