@@ -119,7 +119,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
         tts: false // Add this directly to the body
       }
     });
-    console.log(rst);
+    // console.log(rst);
 
   } catch (err) {
     console.error(err);
