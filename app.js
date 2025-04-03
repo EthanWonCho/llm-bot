@@ -88,9 +88,9 @@ client.on("messageCreate", async function (message) { // Listen for the "message
   // Check if message is from the bot itself to avoid infinite loops
   if (message.author.bot || message.channelId != process.env.DISCORD_CHANNEL) return;
 
-  console.log(`got a message!: ${message.content} `);
+  console.log(`got a message!: ${message.content} \nlength: ${message.content.length}`);
 
-  if (message.content.length > 2000) {
+  if (message.content.length > 500) {
     const endpoint = `channels/` + process.env.DISCORD_CHANNEL + `/messages`;
     try {
       // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
