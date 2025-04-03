@@ -93,7 +93,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
   prompt.push(
     {
       "role":"user",
-      "content":[{ "type":"input_text", "text":message.content }]
+      "content":[{ "type":"text", "text":message.content }]
     } 
   );
 
@@ -102,7 +102,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
   prompt.push(
     {
       "role":"assistant",
-      "content":[{ "type":"output_text", "text":assistant_say }]
+      "content":[{ "type":"text", "text":assistant_say }]
     }
   );
 
