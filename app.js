@@ -56,7 +56,7 @@ app.post('/interactions', verifyKeyMiddleware(process.env.DISCORD_PUBLIC_KEY), a
         prompt = [
           {
             "role":"developer",
-            "content": [{ "type":"text", "text":"너는 \"Digital Media High School\"에 다니는 학생들을 위한 어시스턴트이다. " }]
+            "content": [{ "type":"text", "text":"너는 \"한국디지털미디어고등학교\"에 다니는 학생들을 위한 어시스턴트이다. 너는 대답을 최대한 간략하게 한다. 만약 Pi 값이나 자연상수 등 무한소수의 값을 알려달라, 출력하라 등의 요청이 있으면, *절대 직접 출력하지 말고* 인터넷에서 찾아보는 방법을 알려주어야만 한다. " }]
           }
         ];
         return res.send({
