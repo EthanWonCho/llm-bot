@@ -29,6 +29,19 @@ var promptinit = [
   }
 ];
 
+function isKoreanOrEnglishOnly(str) {
+  // Remove all ASCII punctuation and symbols (excluding control characters)
+  const cleaned = str.replace(/[\x20-\x7E]/g, '') // ASCII printable chars stay
+                     .replace(/[^\x20-\x7E가-힣]/g, ''); // Remove anything not ASCII or Korean
+
+  str.replace('\n\t', '');
+  // Now we test what remains — should be only Korean or only English
+  const onlyKorean = /^[가-힣]*$/.test(cleaned);
+  const onlyEnglish = /^[a-zA-Z]*$/.test(cleaned);
+
+  return onlyKorean || onlyEnglish;
+}
+
 /**
  * Interactions endpoint URL where Discord will send HTTP requests
  * Parse request body and verifies incoming requests using discord-interactions package
@@ -102,6 +115,24 @@ client.on("messageCreate", async function (message) { // Listen for the "message
         }
       });
       console.log("Nope:( Too long");
+      return;
+    } catch (err) {
+      console.error(err);
+    } 
+  }
+
+  if (!isKoreanOrEnglishOnly(message.content)) {
+    const endpoint = `channels/` + process.env.DISCORD_CHANNEL + `/messages`;
+    try {
+      // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
+      const rst = await DiscordRequest(endpoint, { 
+        method: 'POST', 
+        body: {
+          content: "foreign language or emoji", // This should be a string, not an object
+          tts: false // Add this directly to the body
+        }
+      });
+      console.log("foreign language or emoji");
       return;
     } catch (err) {
       console.error(err);
