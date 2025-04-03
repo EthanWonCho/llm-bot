@@ -120,6 +120,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
       }
     });
     // console.log(rst);
+    console.log(safeAssistantSay);
 
   } catch (err) {
     console.error(err);
