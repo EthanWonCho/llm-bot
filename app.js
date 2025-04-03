@@ -35,6 +35,7 @@ function isKoreanOrEnglishOnly(str) {
                      .replace(/[^\x20-\x7E가-힣]/g, ''); // Remove anything not ASCII or Korean
 
   str.replace('\n\t', '');
+  console.log(str);
   // Now we test what remains — should be only Korean or only English
   const onlyKorean = /^[가-힣]*$/.test(cleaned);
   const onlyEnglish = /^[a-zA-Z]*$/.test(cleaned);
