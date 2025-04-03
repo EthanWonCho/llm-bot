@@ -90,6 +90,23 @@ client.on("messageCreate", async function (message) { // Listen for the "message
 
   console.log(`got a message!: ${message.content} `);
 
+  if (message.content.length > 2000) {
+    const endpoint = `channels/` + process.env.DISCORD_CHANNEL + `/messages`;
+    try {
+      // This is calling the bulk overwrite endpoint: https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
+      const rst = await DiscordRequest(endpoint, { 
+        method: 'POST', 
+        body: {
+          content: "Nope:( Too long", // This should be a string, not an object
+          tts: false // Add this directly to the body
+        }
+      });
+      console.log("Nope:( Too long");
+    } catch (err) {
+      console.error(err);
+    } 
+  }
+
   prompt.push(
     {
       "role":"user",
