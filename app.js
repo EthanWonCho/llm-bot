@@ -102,6 +102,7 @@ client.on("messageCreate", async function (message) { // Listen for the "message
         }
       });
       console.log("Nope:( Too long");
+      return;
     } catch (err) {
       console.error(err);
     } 
